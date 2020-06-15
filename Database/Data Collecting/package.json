@@ -1,0 +1,20 @@
+{
+  "name": "top2000-data-collecting",
+  "version": "0.0.1",
+  "description": "Collects all song data for Top2000 and exports it to an SQL DDL.",
+  "main": "generate-output.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sql"
+  ],
+  "author": "Stijn Stroeve",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.15",
+    "node-spotify-api": "^1.1.1",
+    "string-similarity": "^4.0.1"
+  }
+}
