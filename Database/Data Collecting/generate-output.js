@@ -5,7 +5,7 @@ const _ = require('lodash');
 
 const spotify = new Spotify({
     id: '5ec00383ae8b4c3ea7a4b63a3950cda3',
-    secret: 'b9c34297a47c4da798387cf208c2e852'
+    secret: 'b9c34297a47c4da798387cf208c2e852' // No, this one does not work anymore :D
 });
 
 const searchSongByArtist = (songName, artistName, maxBias = 30) => {
@@ -104,7 +104,6 @@ fs.readdir(folderToRead, async (err, files) => {
         console.log(`Reading ${fileName}...`);
 
         const file = fs.readFileSync(folderToRead + '/' + fileName, 'utf8');
-        // console.log(file);
 
         const splitFile = file.split('\n');
         console.log(splitFile[0]);
@@ -117,7 +116,6 @@ fs.readdir(folderToRead, async (err, files) => {
 
 
             const foundSong = findSong(splitSong[1], splitSong[2]);
-            // console.log(foundSong);
 
             if(!foundSong) {
                 // Song is not registered yet
@@ -142,10 +140,7 @@ fs.readdir(folderToRead, async (err, files) => {
                 foundSong.rank_entries.push({year: currentYear, rank: parseInt(splitSong[0])});
             }
 
-
             console.log(`Done ${i}/${splitFile.length - 2}`);
-
-            // console.log(song);
         }
 
         fs.writeFile(`Output/tmp-${fileName}.json`, JSON.stringify(songs, null, 4), (err) => {
@@ -155,8 +150,6 @@ fs.readdir(folderToRead, async (err, files) => {
                 console.log('Generated tmp file successfully!');
             }
         })
-
-        // console.log(songs[0]);
 
     }
 

@@ -3,9 +3,6 @@
 <createdBy>stijn</createdBy>
 <createdTime>2020-06-15 12:17:39 UTC</createdTime>
 <ownerDesignName>Top2000</ownerDesignName>
-<engineerTo>
-<item key="6C7193B7-8F24-E7D4-43D5-30FC6E204312" value="true"/>
-</engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
@@ -19,9 +16,6 @@
 <createdBy>stijn</createdBy>
 <createdTime>2020-06-15 12:17:46 UTC</createdTime>
 <ownerDesignName>Top2000</ownerDesignName>
-<engineerTo>
-<item key="6C7193B7-8F24-E7D4-43D5-30FC6E204312" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -31,9 +25,6 @@
 <createdBy>stijn</createdBy>
 <createdTime>2020-06-15 12:18:07 UTC</createdTime>
 <ownerDesignName>Top2000</ownerDesignName>
-<engineerTo>
-<item key="6C7193B7-8F24-E7D4-43D5-30FC6E204312" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT037</logicalDatatype>
@@ -44,9 +35,6 @@
 <createdBy>stijn</createdBy>
 <createdTime>2020-06-15 12:18:25 UTC</createdTime>
 <ownerDesignName>Top2000</ownerDesignName>
-<engineerTo>
-<item key="6C7193B7-8F24-E7D4-43D5-30FC6E204312" value="true"/>
-</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -56,13 +44,20 @@
 <createdBy>stijn</createdBy>
 <createdTime>2020-06-15 12:18:49 UTC</createdTime>
 <ownerDesignName>Top2000</ownerDesignName>
-<engineerTo>
-<item key="6C7193B7-8F24-E7D4-43D5-30FC6E204312" value="true"/>
-</engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT010</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ExternalSampleUrl" id="D97865EC-F2A1-EB30-9C1F-98A0F912950A">
+<createdBy>stijn</createdBy>
+<createdTime>2020-06-17 16:22:01 UTC</createdTime>
+<ownerDesignName>Top2000</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -71,9 +66,6 @@
 <createdBy>stijn</createdBy>
 <createdTime>2020-06-15 12:18:05 UTC</createdTime>
 <ownerDesignName>Top2000</ownerDesignName>
-<engineerTo>
-<item key="6C7193B7-8F24-E7D4-43D5-30FC6E204312" value="true"/>
-</engineerTo>
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>00B5200B-2D74-52D3-5D9D-5A836B7A991F</attributeRef>
