@@ -44,7 +44,7 @@
         @Html.Raw(item.SongTitle)
     </td>
     <td>
-        Artiest
+        @Html.Raw(String.Join(" & ", item.SongArtists.Select(kvp => kvp.Artist.ArtistName)))
     </td>
     <td>
         @Html.Raw(item.ReleaseDate.Year)

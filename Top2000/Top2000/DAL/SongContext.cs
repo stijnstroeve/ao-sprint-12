@@ -30,6 +30,7 @@ namespace Top2000.DAL
                 .HasMany(c => c.SongArtists)
                 .WithRequired()
                 .HasForeignKey(c => c.ArtistID);
+
         }
     }
 }
