@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Top2000.Models.Song>
+
+@{
+    ViewBag.Title = "Top 2000 - JAAR";
+}
+
+<h2>Top 2000 - JAAR</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Nr.</th>
+        <th>Verloop</th>
+        <th>Titel</th>
+        <th>Artiest</th>
+        <th>Jaar</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        <img width="100" alt="" src="@Html.Raw(item.ExternalImageUrl)">
+
+       
+        @*<audio controls>
+                <source src="@Html.Raw(item.ExternalSampleUrl)" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>*@
+        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+        @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+        @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+    </td>
+    <td>
+        1
+    </td>
+    <td>
+        + 1
+    </td>
+    <td>
+        @Html.Raw(item.SongTitle)
+    </td>
+    <td>
+        Artiest
+    </td>
+    <td>
+        @Html.Raw(item.ReleaseDate.Year)
+    </td>
+</tr>
+}
+
+</table>
