@@ -17,10 +17,11 @@ namespace Top2000.Controllers
         // GET: Song
         public ActionResult Index(string page)
         {
+            // TODO: Max page
             int parsedPage;
             
             // Make sure the page query param is an integer
-            if(!Int32.TryParse(page, out parsedPage))
+            if(!int.TryParse(page, out parsedPage))
             {
                 // If the page is not an int, go to the first page
                 parsedPage = 1;
@@ -29,11 +30,14 @@ namespace Top2000.Controllers
             // Make sure the minimum page is 1
             if (parsedPage < 1) parsedPage = 1;
 
-            List<Song> songs = db.Songs.ToList();
+            // List all songs and paginate them
+            List<Song> songs = db.Songs
+                .OrderBy(x => x.SongID)
+                .Skip((parsedPage - 1) * PAGE_SIZE)
+                .Take(PAGE_SIZE)
+                .ToList();
 
-            var paginatedSongs = songs.GetRange((parsedPage - 1) * PAGE_SIZE, PAGE_SIZE);
-
-            return View(paginatedSongs);
+            return View(songs);
         }
 
         // GET: Song/Details/5

@@ -23,5 +23,7 @@ namespace Top2000.Models
         public string ExternalImageUrl { get; set; }
 
         public string ExternalSampleUrl { get; set; }
+
+        public virtual ICollection<SongArtist> SongArtists { get; set; }
     }
 }
