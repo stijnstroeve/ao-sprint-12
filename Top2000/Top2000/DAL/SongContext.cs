@@ -7,7 +7,6 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using Top2000.Models;
-using Top2000.ViewModels;
 
 namespace Top2000.DAL
 {
@@ -42,18 +41,6 @@ namespace Top2000.DAL
                 .HasMany(c => c.SongArtists)
                 .WithRequired()
                 .HasForeignKey(c => c.ArtistID);
-
-            modelBuilder.Entity<RankedSongViewModel>();
-
-        }
-
-        public virtual ObjectResult<RankedSongViewModel> spSelectListingOnYear(Nullable<int> year)
-        {
-            var yearParameter = year.HasValue ?
-                new ObjectParameter("Year", year) :
-                new ObjectParameter("Year", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RankedSongViewModel>("spSelectListingOnYear", yearParameter);
         }
 
         public List<Song> GetSongList(int year, int page, int pageSize)

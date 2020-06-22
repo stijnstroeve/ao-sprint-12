@@ -1,6 +1,48 @@
-﻿body {
+﻿@font-face {
+    font-family: 'Caros Soft';
+    src: url(../fonts/CarosSoftExtraBold.woff2) format("woff2"),url(../fonts/CarosSoftExtraBold.woff) format("woff");
+    font-weight: 800;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url(../fonts/DMSans-Italic.woff2) format("woff2"),url(../fonts/DMSans-Italic.woff) format("woff");
+    font-weight: 400;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url(../fonts/DMSans-BoldItalic.woff2) format("woff2"),url(../fonts/DMSans-BoldItalic.woff) format("woff");
+    font-weight: 700;
+    font-style: italic
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url(../fonts/DMSans-Regular.woff2) format("woff2"),url(../fonts/DMSans-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url(../fonts/DMSans-Bold.woff2) format("woff2"),url(../fonts/DMSans-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: normal
+}
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: "DM Sans",sans-serif,sans-serif;
+    background-color: #22282e;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +63,62 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.list-head {
+    background-color: #d9151b;
+    margin-bottom: 0;
+    margin-top: 30px;
+    padding: 13px 25px;
+}
+
+.list-head h2 {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.list-table {
+    background-color: white;
+    width: 100%;
+}
+
+.list-table tr {
+    border-bottom: 3px solid #22282e;
+}
+
+.list-table th {
+    text-transform: uppercase;
+    font-family: "Caros Soft",sans-serif;
+    padding: 15px;
+}
+
+.list-table .tbl-rank {
+    background-color: #171f26;
+    font-size: 32px;
+    color: white;
+    text-align: center;
+    width: 88px;
+    height: 88px;
+    line-height: 88px;
+    font-family: "Caros Soft",sans-serif;
+}
+
+.list-table .tbl-thumbnail {
+    width: 88px;
+}
+
+.list-table .tbl-title {
+    font-weight: 700;
+}
+
+.list-table .tbl-year {
+    font-style: italic;
+}
+
+.list-table .tbl-progress {
+    width: 88px;
+    height: 88px;
+    line-height: 88px;
+    text-align: center;
 }

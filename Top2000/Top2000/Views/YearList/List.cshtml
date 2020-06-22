@@ -1,29 +1,28 @@
-﻿@model IEnumerable<Top2000.Models.Song>
+﻿@model IEnumerable<Top2000.ViewModels.RankedSongViewModel>
 
 @{
     ViewBag.Title = "Top 2000 - " + ViewBag.Year;
 }
 
-<h2>Top 2000 - @Html.Raw(ViewBag.Year)</h2>
+<div class="list-head">
+    <h2>Lijst @Html.Raw(ViewBag.Year)</h2>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>Nr.</th>
-        <th>Verloop</th>
-        <th>Titel</th>
-        <th>Artiest</th>
-        <th>Jaar</th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
+<table class="list-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nr.</th>
+            <th>Verloop</th>
+            <th>Titel</th>
+            <th>Artiest</th>
+            <th>Jaar</th>
+        </tr>
+    </thead>
+@foreach (var viewModel in Model) {
 <tr>
-    <td>
-        <img width="100" alt="" src="@Html.Raw(item.ExternalImageUrl)">
+    <td class="tbl-thumbnail">
+        <img width="88" alt="" src="@Html.Raw(viewModel.ExternalImageUrl)">
 
        
         @*<audio controls>
@@ -34,20 +33,28 @@
         @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
         @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
     </td>
-    <td>
-        1
+    <td class="tbl-rank">
+        @Html.Raw(viewModel.Rank)
     </td>
-    <td>
-        + 1
+    <td class="tbl-progress">
+        @if (!viewModel.Progress.IsNew)
+        {
+            @Html.Raw(viewModel.Progress.Difference)
+        }
+        else
+        {
+            @Html.Raw("New")
+        }
+        @*@Html.Raw(viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year).FirstOrDefault().Rank - viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year - 1).FirstOrDefault().Rank)*@
     </td>
-    <td>
-        @Html.Raw(item.SongTitle)
+    <td class="tbl-title">
+        @Html.Raw(viewModel.SongTitle)
     </td>
-    <td>
-        @Html.Raw(String.Join(" & ", item.SongArtists.Select(kvp => kvp.Artist.ArtistName)))
+    <td class="tbl-artist">
+        @Html.Raw(viewModel.Artist)
     </td>
-    <td>
-        @Html.Raw(item.ReleaseDate.Year)
+    <td class="tbl-year">
+        @Html.Raw(viewModel.ReleaseDate.Year)
     </td>
 </tr>
 }
