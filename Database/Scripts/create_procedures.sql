@@ -73,9 +73,7 @@ CREATE PROCEDURE spSelectListingOnYear
     @Year integer  
 AS
 	SELECT 
-		Song.SongID,
-		Song.SongTitle,
-		Song.ReleaseDate,
+		Song.*,
 		SongRank.Rank
 	FROM 
 		Song 
@@ -83,4 +81,6 @@ AS
 		ON Song.SongID = SongRank.SongID 
 	WHERE 
 		SongRank.Year = @Year
+	ORDER BY
+		SongRank.Rank
 GO

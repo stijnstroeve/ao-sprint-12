@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Top2000.Models.Song>
 
 @{
-    ViewBag.Title = "Top 2000 - JAAR";
+    ViewBag.Title = "Top 2000 - " + ViewBag.Year;
 }
 
-<h2>Top 2000 - JAAR</h2>
+<h2>Top 2000 - @Html.Raw(ViewBag.Year)</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
