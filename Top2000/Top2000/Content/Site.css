@@ -45,6 +45,18 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+.navbar {
+    background-color: white;
+    height: 70px;
+}
+
+.banner {
+    width: 100%;
+    height: 200px;
+    background-image: url(/Content/Images/header.png);
+}
+
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -70,12 +82,18 @@ textarea {
     margin-bottom: 0;
     margin-top: 30px;
     padding: 13px 25px;
+    display: flex;
+}
+
+.list-head > select {
+    margin-left: auto;
 }
 
 .list-head h2 {
     color: white;
     font-size: 22px;
     font-weight: 700;
+    max-width: 75%;
 }
 
 .list-table {
@@ -121,4 +139,29 @@ textarea {
     height: 88px;
     line-height: 88px;
     text-align: center;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-container .pagination {
+    border-radius: 0;
+}
+
+.pagination-container .active a {
+    background-color: #d9151b;
+    border-color: #d9151b;
+}
+.pagination > li > a, .pagination > li > span {
+    color: #d9151b;
+}
+
+.pagination-container li a {
+    border-radius: 0 !important;
+}
+
+footer {
+    color: white;
 }

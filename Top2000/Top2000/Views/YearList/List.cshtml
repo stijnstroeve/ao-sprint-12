@@ -1,12 +1,21 @@
-﻿@model IEnumerable<Top2000.ViewModels.RankedSongViewModel>
-
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList<Top2000.ViewModels.RankedSongViewModel>
 @{
     ViewBag.Title = "Top 2000 - " + ViewBag.Year;
 }
 
-<div class="list-head">
-    <h2>Lijst @Html.Raw(ViewBag.Year)</h2>
-</div>
+    <div class="list-head">
+        <h2>
+            Lijst @Html.Raw(ViewBag.Year)
+        </h2>
+        <select>
+            @foreach (var year in ViewBag.DistinctYears)
+            {
+                <option value="@Html.Raw(year)">@Html.Raw(year)</option>
+            }
+        </select>
+    </div>
 
 <table class="list-table">
     <thead>
@@ -19,44 +28,38 @@
             <th>Jaar</th>
         </tr>
     </thead>
-@foreach (var viewModel in Model) {
-<tr>
-    <td class="tbl-thumbnail">
-        <img width="88" alt="" src="@Html.Raw(viewModel.ExternalImageUrl)">
-
-       
-        @*<audio controls>
-                <source src="@Html.Raw(item.ExternalSampleUrl)" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>*@
-        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-        @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-        @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-    </td>
-    <td class="tbl-rank">
-        @Html.Raw(viewModel.Rank)
-    </td>
-    <td class="tbl-progress">
-        @if (!viewModel.Progress.IsNew)
-        {
-            @Html.Raw(viewModel.Progress.Difference)
-        }
-        else
-        {
-            @Html.Raw("New")
-        }
-        @*@Html.Raw(viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year).FirstOrDefault().Rank - viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year - 1).FirstOrDefault().Rank)*@
-    </td>
-    <td class="tbl-title">
-        @Html.Raw(viewModel.SongTitle)
-    </td>
-    <td class="tbl-artist">
-        @Html.Raw(viewModel.Artist)
-    </td>
-    <td class="tbl-year">
-        @Html.Raw(viewModel.ReleaseDate.Year)
-    </td>
-</tr>
-}
+    @foreach (var viewModel in Model)
+    {
+        <tr>
+            <td class="tbl-thumbnail">
+                <img width="88" alt="" src="@Html.Raw(viewModel.ExternalImageUrl)">
+            </td>
+            <td class="tbl-rank">
+                @Html.Raw(viewModel.Rank)
+            </td>
+            <td class="tbl-progress">
+                @if (viewModel.Progress != null && !viewModel.Progress.IsNew)
+                {
+                    @Html.Raw(viewModel.Progress.Difference)
+                }
+                else
+                {
+                    @Html.Raw("New")
+                }
+                @*@Html.Raw(viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year).FirstOrDefault().Rank - viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year - 1).FirstOrDefault().Rank)*@
+            </td>
+            <td class="tbl-title">
+                @Html.Raw(viewModel.SongTitle)
+            </td>
+            <td class="tbl-artist">
+                @Html.Raw(String.Join(" & ", viewModel.Artists))
+            </td>
+            <td class="tbl-year">
+                @Html.Raw(viewModel.ReleaseDate.Year)
+            </td>
+        </tr>
+    }
 
 </table>
+
+@Html.PagedListPager(Model, (Func<int, string>)ViewBag.PageUrlGenerator)

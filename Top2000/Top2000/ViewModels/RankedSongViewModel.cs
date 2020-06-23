@@ -1,6 +1,6 @@
 ﻿
 using System;
-using Top2000.Models;
+using System.Collections.Generic;
 
 namespace Top2000.ViewModels
 {
@@ -10,7 +10,7 @@ namespace Top2000.ViewModels
         public DateTime ReleaseDate { get; set; }
         public string ExternalImageUrl { get; set; }
         public string ExternalSampleUrl { get; set; }
-        public string Artist { get; set; }
+        public List<string> Artists { get; set; }
         public int Rank { get; set; }
         public RankProgress Progress { get; set; }
     }
