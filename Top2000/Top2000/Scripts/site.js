@@ -48,6 +48,7 @@
             // Create the audio element, we do this with lazy loading so it won't load all audio from the page at once
             const audioElement = document.createElement('audio');
             audioElement.setAttribute('src', audioSource);
+            audioElement.volume = 0.4;
 
             const audioKeyValuePair = {
                 key: audioSource,
