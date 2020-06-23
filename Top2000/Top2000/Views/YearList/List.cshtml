@@ -32,7 +32,17 @@
     {
         <tr>
             <td class="tbl-thumbnail">
-                <img width="88" alt="" src="@Html.Raw(viewModel.ExternalImageUrl)">
+                <div audio-src="@Html.Raw(viewModel.ExternalSampleUrl)" class="tbl-media-player" style="background-image: url(@Html.Raw(viewModel.ExternalImageUrl))">
+                    @if (viewModel.ExternalSampleUrl != "NULL")
+                    {
+                    <svg width="100%" height="100%" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path id="ytp-12" d="M 11 10 L 18 13.74 18 22.28 11 26 M 18 13.74 L 26 18 26 18 18 22.28">
+                            <animate begin="indefinite" attributeType="XML" attributeName="d" fill="freeze" from="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26" to="M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28" dur="0.1s" keySplines=".4 0 1 1"
+                                     repeatCount="1"></animate>
+                        </path>
+                    </svg>
+                    }
+                </div>
             </td>
             <td class="tbl-rank">
                 @Html.Raw(viewModel.Rank)
@@ -46,13 +56,22 @@
                 {
                     @Html.Raw("New")
                 }
-                @*@Html.Raw(viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year).FirstOrDefault().Rank - viewModel.Song.SongRanks.Where(y => y.Year == ViewBag.Year - 1).FirstOrDefault().Rank)*@
             </td>
             <td class="tbl-title">
                 @Html.Raw(viewModel.SongTitle)
             </td>
             <td class="tbl-artist">
-                @Html.Raw(String.Join(" & ", viewModel.Artists))
+                @{
+                    string artist = String.Join(" & ", viewModel.Artists);
+                }
+                @if (String.IsNullOrEmpty(artist))
+                {
+                    @Html.Raw("Unknown")
+                }
+                else
+                {
+                    @Html.Raw(artist)
+                }
             </td>
             <td class="tbl-year">
                 @Html.Raw(viewModel.ReleaseDate.Year)

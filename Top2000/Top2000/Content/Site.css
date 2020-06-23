@@ -48,6 +48,13 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
     background-color: white;
     height: 70px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.navbar {
+
 }
 
 .banner {
@@ -120,10 +127,23 @@ textarea {
     height: 88px;
     line-height: 88px;
     font-family: "Caros Soft",sans-serif;
+    user-select: none;
 }
 
-.list-table .tbl-thumbnail {
+.list-table .tbl-thumbnail, .tbl-media-player {
     width: 88px;
+    height: 88px;
+}
+
+.list-table .tbl-thumbnail .tbl-media-player {
+    background-repeat: no-repeat;
+    background-size: 88px 88px;
+    z-index: 999;
+}
+
+.list-table .tbl-thumbnail .tbl-media-player > svg {
+    fill: white;
+    cursor: pointer;
 }
 
 .list-table .tbl-title {
