@@ -1,0 +1,50 @@
+﻿@model Top2000.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gebruiker - @Html.Raw(Model.FirstName + " " + Model.LastName)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            E-mail
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Voornaam
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            Achternaam
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            Rol
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Bewerken", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Terug naar gebruikers", "List")
+</p>

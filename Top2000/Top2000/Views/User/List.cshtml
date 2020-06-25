@@ -1,0 +1,62 @@
+﻿@using Top2000.Helpers;
+@using Top2000.Models;
+@model IEnumerable<Top2000.ViewModels.UserViewModel>
+@{
+    ViewBag.Title = "Gebruikers";
+}
+
+<h2>Gebruikers</h2>
+<hr />
+<p>
+    @Html.ActionLink("Nieuwe Gebruiker", "Create")
+</p>
+<table class="general-table">
+    <tr>
+        <th>
+            E-mail
+        </th>
+        <th>
+            Voornaam
+        </th>
+        <th>
+            Achternaam
+        </th>
+        <th>
+            Rol
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+
+            @{
+                var user = (UserIdentity)this.GetUser().Identity;
+            }
+
+            @if (user.ID != item.ID)
+            {
+                @Html.Raw("|")
+                @Html.ActionLink("Bewerken", "Edit", new { id = item.ID })
+                @Html.Raw("|");
+                @Html.ActionLink("Verwijderen", "Delete", new { id = item.ID }, new { @class = "delete" })
+            }
+        </td>
+    </tr>
+}
+
+</table>

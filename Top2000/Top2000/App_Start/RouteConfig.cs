@@ -22,7 +22,7 @@ namespace Top2000
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "YearList", action = "Index", id = UrlParameter.Optional }
             );
         }

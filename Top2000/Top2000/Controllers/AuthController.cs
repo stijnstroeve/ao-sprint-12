@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
@@ -8,7 +9,7 @@ using Top2000.Attributes;
 using Top2000.Helpers;
 using Top2000.Models;
 
-namespace Top2000.DAL
+namespace Top2000.Controllers
 {
     public class AuthController : Controller
     {
@@ -16,11 +17,6 @@ namespace Top2000.DAL
         [LoginDisallowed]
         public ActionResult Login()
         {
-            // Make sure you can't access this page when you are logged in
-            if (this.IsLoggedIn())
-            {
-                return RedirectToAction("Index", "YearList");
-            }
             return View();
         }
 
@@ -28,11 +24,6 @@ namespace Top2000.DAL
         [LoginDisallowed]
         public ActionResult Register()
         {
-            // Make sure you can't access this page when you are logged in
-            if(this.IsLoggedIn())
-            {
-                return RedirectToAction("Index", "YearList");
-            }
             return View();
         }
 
@@ -138,10 +129,22 @@ namespace Top2000.DAL
                 string fullName = $"{user.FirstName} {user.LastName}";
 
                 // Create the user identity
-                var principal = new GenericPrincipal(
-                    new GenericIdentity(fullName),
-                    new string[] { user.Role.RoleKey } // TODO: Hardekode
+                UserIdentity identity = new UserIdentity(
+                    fullName,
+                    "userAuth",
+                    user.UserID,
+                    user.Email,
+                    user.FirstName,
+                    user.LastName,
+                    user.Role.RoleName
                 );
+
+                // Create the user principal
+                var principal = new GenericPrincipal(
+                    identity,
+                    new string[] { user.Role.RoleKey }
+                );
+
                 Session["principal"] = principal;
 
                 return RedirectToAction("Index", "YearList");

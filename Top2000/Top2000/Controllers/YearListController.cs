@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Top2000.DAL;
 using Top2000.ViewModels;
 
 namespace Top2000.Controllers
@@ -21,7 +20,7 @@ namespace Top2000.Controllers
             return RedirectToAction("List", new { id = latestYear });
         }
 
-        // GET: Song
+        // GET: YearList/YEAR
         public ActionResult List(int id, int? page)
         {
             // Used for generation urls for pagination
