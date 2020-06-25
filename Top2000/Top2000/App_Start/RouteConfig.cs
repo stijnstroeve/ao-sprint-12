@@ -13,11 +13,11 @@ namespace Top2000
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "",
-            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            //);
+            routes.MapRoute(
+                name: "Default",
+                url: "",
+                defaults: new { controller = "YearList", action = "Index", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "SongList",

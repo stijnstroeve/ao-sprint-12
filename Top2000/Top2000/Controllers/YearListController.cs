@@ -12,12 +12,19 @@ namespace Top2000.Controllers
 {
     public class YearListController : Controller
     {
+        // The max amount of items in a page
         const int PAGE_SIZE = 20;
+
+        public ActionResult Index()
+        {
+            int latestYear = GetLatestYear();
+            return RedirectToAction("List", new { id = latestYear });
+        }
 
         // GET: Song
         public ActionResult List(int id, int? page)
         {
-            // Used for 
+            // Used for generation urls for pagination
             Func<int, string> PageUrlGenerator = (newPage) => Url.Action("List", new
             {
                 page = newPage
@@ -60,6 +67,15 @@ namespace Top2000.Controllers
                     .ToPagedList(page, PAGE_SIZE);
                 return result;
             }
+        }
+
+        /// <summary>
+        /// Gets the latest year of the all years
+        /// </summary>
+        /// <returns></returns>
+        private int GetLatestYear()
+        {
+            return GetDistinctYears().Max();
         }
 
         /// <summary>
