@@ -1,7 +1,8 @@
 ﻿@model Top2000.Models.UserEditModel
-
 @{
     ViewBag.Title = "Bewerken";
+
+    List<Role> Roles = ViewBag.Roles;
 }
 
 <h2>Bewerken</h2>
@@ -45,13 +46,12 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.RoleID, "RoleID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoleKey, "Rol", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.RoleKey, new SelectList(Roles, "RoleKey", "RoleName", Model.RoleKey), htmlAttributes: new { @class = "form-control" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

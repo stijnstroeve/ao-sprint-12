@@ -22,27 +22,32 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="@Html.IsSelected(actions: "List", controllers: "YearList")">@Html.ActionLink("Lijst", "Index", "YearList")</li>
-                </ul>
-                <div class="pull-right">
+                <div class="nav-flex">
                     <ul class="nav navbar-nav">
-                        @if (this.IsLoggedIn())
-                        {
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stijn Stroeve<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Gebruikers", "List", "User")</li>
-                                    <li>@Html.ActionLink("Uitloggen", "Logout", "Auth")</li>
-                                </ul>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="@Html.IsSelected(actions: "Login", controllers: "Auth")">@Html.ActionLink("Inloggen", "Login", "Auth")</li>
-                            <li class="@Html.IsSelected(actions: "Register", controllers: "Auth")">@Html.ActionLink("Registeren", "Register", "Auth")</li>
-                        }
+                        <li class="@Html.IsSelected(actions: "List", controllers: "YearList")">@Html.ActionLink("Top 2000", "Index", "YearList")</li>
                     </ul>
+                    <div class="pull-right">
+                        <ul class="nav navbar-nav">
+                            @if (this.IsLoggedIn())
+                            {
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Html.Raw(this.GetUser().Identity.Name)<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        @if (this.GetUser().IsInRole("admin"))
+                                        {
+                                            <li>@Html.ActionLink("Gebruikers", "List", "User")</li>
+                                        }
+                                        <li>@Html.ActionLink("Uitloggen", "Logout", "Auth")</li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="@Html.IsSelected(actions: "Login", controllers: "Auth")">@Html.ActionLink("Inloggen", "Login", "Auth")</li>
+                                <li class="@Html.IsSelected(actions: "Register", controllers: "Auth")">@Html.ActionLink("Registeren", "Register", "Auth")</li>
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

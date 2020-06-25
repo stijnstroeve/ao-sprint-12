@@ -140,7 +140,6 @@
     </Compile>
     <Compile Include="Attributes\LoginDisallowedAttribute.cs" />
     <Compile Include="Attributes\LoginRequiredAttribute.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Helpers\PageHelper.cs" />
     <Compile Include="Controllers\YearListController.cs" />
@@ -252,7 +251,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

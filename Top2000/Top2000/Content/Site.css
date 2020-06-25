@@ -60,17 +60,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-nav a {
-    color: #262626;
-    transition: 0.5s;
+    color: #a8abb0;
+    transition: 0.25s;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: "Caros Soft",sans-serif;
 }
 
-.navbar-nav .nav-active {
-    font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.05);
+.navbar .nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
 }
 
-.navbar-nav a:hover {
-    color: gray;
+.navbar-nav > li > a {
+    padding: 5px 15px;
+}
+
+.navbar-nav .nav-active li {
+    line-height: 1.5;
+    height: 100%;
+}
+
+.navbar-nav .nav-active a, .navbar-nav a:hover {
+    background-color: #d9151b;
+    color: white;
+    border-radius: 50px;
 }
 
 .banner {
@@ -156,6 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .list-table .tbl-title {
     font-weight: 700;
+    padding-left: 20px;
 }
 
 .list-table .tbl-year {
@@ -169,8 +186,20 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+.body-content > h2 {
+    margin-top: 15px;
+}
+
 .general-table * {
     padding: 8px;
+}
+
+.general-table th {
+    background-color: rgba(255, 255, 255, 0.2)
+}
+
+.general-table td {
+    background-color: rgba(255, 255, 255, 0.05)
 }
 
 .general-table th, .general-table td {
@@ -253,5 +282,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 footer {
+    color: white;
+}
+
+.body-content label, .body-content dt, .body-content dd {
     color: white;
 }

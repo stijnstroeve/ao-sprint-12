@@ -19,26 +19,6 @@ namespace Top2000.Controllers
             return View();
         }
 
-        // GET: User/Edit/1
-        public ActionResult Edit(int id)
-        {
-            using (var db = new EntityContext())
-            {
-                var userDetails = db.User
-                    .Where(user => user.UserID == id)
-                    .Select(user => new UserEditModel
-                    {
-                        Email = user.Email,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Password = ""
-                        //Role = user.Role.RoleName
-                    })
-                    .FirstOrDefault();
-                return View(userDetails);
-            }
-        }
-
         // GET: User/Delete/1
         public ActionResult Delete(int id)
         {
@@ -56,6 +36,30 @@ namespace Top2000.Controllers
             }
         }
 
+        // GET: User/Edit/1
+        public ActionResult Edit(int id)
+        {
+            using (var db = new EntityContext())
+            {
+                var userDetails = db.User
+                    .Where(user => user.UserID == id)
+                    .Select(user => new UserEditModel
+                    {
+                        Email = user.Email,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Password = "",
+                        RoleKey = user.Role.RoleKey
+                    })
+                    .FirstOrDefault();
+
+                // Add the roles to the viewbag so they can be displayed
+                var roles = db.Role.ToList();
+                ViewBag.Roles = roles;
+
+                return View(userDetails);
+            }
+        }
 
         // POST: User/Edit/1
         [HttpPost]
@@ -105,6 +109,21 @@ namespace Top2000.Controllers
                     }
 
                     //TODO: Update role
+                    if (editModel.RoleKey != user.Role.RoleKey)
+                    {
+                        // If the role was updated, update the role to its role id
+                        var role = db.Role.Where(x => x.RoleKey == editModel.RoleKey).FirstOrDefault();
+
+                        // Make sure the role exists so the user wont be assigned to a non existing role
+                        if (role == null)
+                        {
+                            ViewBag.Error = "De rol bestaat niet!";
+                            return View(editModel);
+                        }
+
+                        // Update the actual role
+                        user.RoleID = role.RoleID;
+                    }
 
                     // Save the updates user to the database
                     db.SaveChanges();

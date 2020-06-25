@@ -22,7 +22,6 @@
         <tr>
             <th></th>
             <th>Nr.</th>
-            <th>Verloop</th>
             <th>Titel</th>
             <th>Artiest</th>
             <th>Jaar</th>
@@ -46,16 +45,6 @@
             </td>
             <td class="tbl-rank">
                 @Html.Raw(viewModel.Rank)
-            </td>
-            <td class="tbl-progress">
-                @if (viewModel.Progress != null && !viewModel.Progress.IsNew)
-                {
-                    @Html.Raw(viewModel.Progress.Difference)
-                }
-                else
-                {
-                    @Html.Raw("New")
-                }
             </td>
             <td class="tbl-title">
                 @Html.Raw(viewModel.SongTitle)

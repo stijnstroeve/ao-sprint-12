@@ -31,7 +31,5 @@ namespace Top2000
         public virtual DbSet<Song> Song { get; set; }
         public virtual DbSet<SongRank> SongRank { get; set; }
         public virtual DbSet<User> User { get; set; }
-
-        public System.Data.Entity.DbSet<Top2000.ViewModels.UserViewModel> UserViewModels { get; set; }
     }
 }

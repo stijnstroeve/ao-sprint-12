@@ -18,7 +18,7 @@
                 <label for="password">Wachtwoord</label>
                 @Html.TextBoxFor(x => x.Password, new { type = "password", id = "password", placeholder = "Wachtwoord", @class = "form-control" })
             </div>
-            <p>@ViewBag.Error</p>
+            <p class="error">@ViewBag.Error</p>
 
             <button type="submit" class="btn btn-danger">Inloggen</button>
         }

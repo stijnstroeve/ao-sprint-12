@@ -60,7 +60,6 @@ namespace Top2000.Controllers
                         ExternalSampleUrl = rank.Song.ExternalSampleUrl,
                         Rank = rank.Rank,
                         Artists = (List<string>)rank.Song.Artist.Select(kvp => kvp.ArtistName),
-                        //Progress = progress
                     })
                     .ToList()
                     .ToPagedList(page, PAGE_SIZE);
