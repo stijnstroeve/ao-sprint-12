@@ -55,6 +55,24 @@ h1, h2, h3, h4, h5, h6 {
     justify-items: center;
 }
 
+.navbar-header img {
+    margin-right: 10px;
+}
+
+.navbar-nav a {
+    color: #262626;
+    transition: 0.5s;
+}
+
+.navbar-nav .nav-active {
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navbar-nav a:hover {
+    color: gray;
+}
+
 .banner {
     width: 100%;
     height: 200px;
@@ -207,11 +225,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .auth-wrapper form label {
     color: rgba(255, 255, 255, 0.6);
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .auth-wrapper form h2 {
     margin-bottom: 10px;
+}
+
+.auth-wrapper form > .error {
+    color: red;
+}
+
+.auth-wrapper form > .success {
+    color: lawngreen;
 }
 
 footer {

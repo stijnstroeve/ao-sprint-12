@@ -138,15 +138,19 @@
     <Compile Include="Artist.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Attributes\LoginDisallowedAttribute.cs" />
+    <Compile Include="Attributes\LoginRequiredAttribute.cs" />
+    <Compile Include="Helpers\PageHelper.cs" />
     <Compile Include="Controllers\YearListController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="DAL\SongContext.cs" />
     <Compile Include="Genre.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AuthHelper.cs" />
+    <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Models.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Top2000.Helpers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,10 +23,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Lijst", "Index", "YearList")</li>
-                    <li>@Html.ActionLink("Inloggen", "Login", "Auth")</li>
-                    <li>@Html.ActionLink("Registeren", "Register", "Auth")</li>
+                    <li class="@Html.IsSelected(actions: "List", controllers: "YearList")">@Html.ActionLink("Lijst", "Index", "YearList")</li>
+
+
                 </ul>
+                <div class="pull-right">
+                    <ul class="nav navbar-nav">
+                        @if (this.IsLoggedIn())
+                        {
+                            <li>@Html.ActionLink("Uitloggen", "Logout", "Auth")</li>
+                        }
+                        else
+                        {
+                            <li class="@Html.IsSelected(actions: "Login", controllers: "Auth")">@Html.ActionLink("Inloggen", "Login", "Auth")</li>
+                            <li class="@Html.IsSelected(actions: "Register", controllers: "Auth")">@Html.ActionLink("Registeren", "Register", "Auth")</li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

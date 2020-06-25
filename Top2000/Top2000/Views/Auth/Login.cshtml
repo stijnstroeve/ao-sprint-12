@@ -8,16 +8,18 @@
 
         @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
         {
-            <h2>Inloggen</h2>
 
+            <h2>Inloggen</h2>
             <div class="form-group">
                 <label for="email">E-mail address</label>
                 @Html.TextBoxFor(x => x.Email, new { id = "email", placeholder = "E-mail invoeren", @class = "form-control" })
             </div>
             <div class="form-group">
                 <label for="password">Wachtwoord</label>
-                @Html.TextBoxFor(x => x.Password, new { id = "password", placeholder = "Wachtwoord", @class = "form-control" })
+                @Html.TextBoxFor(x => x.Password, new { type = "password", id = "password", placeholder = "Wachtwoord", @class = "form-control" })
             </div>
+            <p>@ViewBag.Error</p>
+
             <button type="submit" class="btn btn-danger">Inloggen</button>
         }
 
