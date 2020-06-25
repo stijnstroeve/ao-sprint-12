@@ -43,6 +43,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    color: white;
 }
 
 /* Override bootstrap's default navbar */
@@ -74,13 +75,6 @@ h1, h2, h3, h4, h5, h6 {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 .list-head {
     background-color: #d9151b;
     margin-bottom: 0;
@@ -94,7 +88,6 @@ textarea {
 }
 
 .list-head h2 {
-    color: white;
     font-size: 22px;
     font-weight: 700;
     max-width: 75%;
@@ -177,6 +170,48 @@ textarea {
 
 .pagination-container li a {
     border-radius: 0 !important;
+}
+
+/* Login wrapper animation */ 
+@keyframes show-auth {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.auth-modal {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-wrapper {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin: 15px;
+    border-radius: 5px;
+    animation: show-login;
+    animation-duration: 1.5s;
+}
+
+.auth-wrapper form button, input {
+    width: 100%;
+}
+
+.auth-wrapper form button {
+    background-color: #d9151b;
+}
+
+.auth-wrapper form label {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+.auth-wrapper form h2 {
+    margin-bottom: 10px;
 }
 
 footer {

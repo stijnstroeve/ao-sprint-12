@@ -14,19 +14,17 @@ namespace Top2000
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "",
-                defaults: new { controller = "YearList", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "SongList",
                 url: "{id}",
                 defaults: new { controller = "YearList", action = "List", id = UrlParameter.Optional },
                 constraints: new { id = @"\d+" }
             );
 
-            //routes.
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}",
+                defaults: new { controller = "YearList", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }
