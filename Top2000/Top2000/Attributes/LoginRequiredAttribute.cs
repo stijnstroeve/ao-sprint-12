@@ -15,6 +15,7 @@ namespace Top2000.Attributes
             var principal = filterContext.HttpContext.Session["principal"];
             if (principal == null)
             {
+                // Redirect back to the song list
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                     {

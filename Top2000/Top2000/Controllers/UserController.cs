@@ -10,7 +10,7 @@ using Top2000.ViewModels;
 
 namespace Top2000.Controllers
 {
-    [LoginRequired] // TODO: Role
+    [LoginRequired]
     public class UserController : Controller
     {
         // GET: User
@@ -24,12 +24,15 @@ namespace Top2000.Controllers
         {
             using (var db = new EntityContext())
             {
+                // First retrieve the details of the user from the db
                 var userDetails = db.User
                     .Where(user => user.UserID == id)
                     .FirstOrDefault();
                 
-                // Save changes to the database
+                // Remove the user from the database set
                 db.User.Remove(userDetails);
+
+                // Save the changes to the database
                 db.SaveChanges();
 
                 return RedirectToAction("List");
@@ -41,6 +44,7 @@ namespace Top2000.Controllers
         {
             using (var db = new EntityContext())
             {
+                // First retrieve the details of the user from the db
                 var userDetails = db.User
                     .Where(user => user.UserID == id)
                     .Select(user => new UserEditModel
@@ -53,7 +57,7 @@ namespace Top2000.Controllers
                     })
                     .FirstOrDefault();
 
-                // Add the roles to the viewbag so they can be displayed
+                // Add the roles to the viewbag so they can be displayed easily
                 var roles = db.Role.ToList();
                 ViewBag.Roles = roles;
 
@@ -93,6 +97,7 @@ namespace Top2000.Controllers
                         // Make sure the email is not already used
                         if (duplicateUser != null)
                         {
+                            // The email is already in use
                             ViewBag.Error = "Gebruiker met deze e-mail bestaat al.";
                             return View(editModel);
                         } else
@@ -108,10 +113,10 @@ namespace Top2000.Controllers
                         user.PasswordHash = PasswordHelper.ComputeSha256Hash(editModel.Password);
                     }
 
-                    //TODO: Update role
+                    // Check if the role should be updated
                     if (editModel.RoleKey != user.Role.RoleKey)
                     {
-                        // If the role was updated, update the role to its role id
+                        // If the role should be updated, update the role to its role id
                         var role = db.Role.Where(x => x.RoleKey == editModel.RoleKey).FirstOrDefault();
 
                         // Make sure the role exists so the user wont be assigned to a non existing role
@@ -163,6 +168,7 @@ namespace Top2000.Controllers
         {
             using (var db = new EntityContext())
             {
+                // List all users from the database and map it to a view model
                 var users = db.User
                     .Select(user => new UserViewModel
                     {

@@ -41,12 +41,18 @@ namespace Top2000.Controllers
             return View(viewModels);
         }
 
+        /// <summary>
+        /// Gets all songs ranked by the given year 
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
         private IPagedList<RankedSongViewModel> getRankedSongModels(int year, int page)
         {
             // First fetch all distinct years from the database
             var distinctYears = GetDistinctYears();
 
-            // Get all songs by their year
+            // Get all songs by their year and map it to a view model
             using (var db = new EntityContext())
             {
                 var result = db.SongRank
@@ -86,7 +92,7 @@ namespace Top2000.Controllers
             {
                 var result = db.SongRank
                     .Select(x => x.Year)
-                    .Distinct()
+                    .Distinct() // Makes sure only unique values get selected
                     .OrderByDescending(x => x)
                     .ToList();
                 return result;
